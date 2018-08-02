@@ -1,0 +1,28 @@
+---
+layout: archive
+---
+{{ content }}
+
+<!-- Last modified event -- could be recently submitted, might be an edit
+<!-- TODO: Grab all events, sort by modified, and limit to 1 -->
+<!--
+<h3 class="archive__subtitle">Updated Event</h3>
+
+{% for post in site.events %}
+  {% include archive-single.html %}
+{% endfor %}
+-->
+
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].upcoming_events | default: "Upcoming Events" }}</h3>
+
+{% for post in site.events %}
+  <!-- TODO: only show upcoming dates -->
+  {% if post.date %}
+    {% include event-single.html %}
+  {% endif %}
+{% endfor %}
+
+<!-- TODO: paginator with collections -->
+<!--
+{% include paginator.html %}
+-->
