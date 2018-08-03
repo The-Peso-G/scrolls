@@ -1,27 +1,11 @@
 ---
 layout: archive
 ---
-{{ content }}
 
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
-<h3 class="archive__subtitle">Updated Event</h3>
-
-{% assign sorted = site.events | sort: 'modified' | reverse %}
-{% for post in sorted limit:1 %}
-  {% include event-single.html %}
+{% for post in paginator.posts %}
+  {% include archive-single.html %}
 {% endfor %}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].upcoming_events | default: "Upcoming Events" }}</h3>
-
-{% assign builddate = now | date: '%s' %}
-{% for post in site.events %}
-  <!-- TODO: only show upcoming dates -->
-  {% if post.event[start_date] < builddate %}
-    {% include event-single.html %}
-  {% endif %}
-{% endfor %}
-
-<!-- TODO: paginator with collections-->
-<!--
 {% include paginator.html %}
--->
