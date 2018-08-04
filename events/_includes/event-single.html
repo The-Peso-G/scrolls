@@ -24,14 +24,13 @@
       </div>
     {% endif %}
     <h2 class="archive__item-title" itemprop="headline">
-      {{ post.event.start_date }}:&nbsp;
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-      <p class="page__meta">{{ post.event.location }} | {{ post.event.start_date }} - {{ post.event.end_date }}</p>
-    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+      <p class="page__meta">{{ post.event.location }} | {{ post.event.start_date | date: "%B %d" }} - {{ post.event.end_date | date: "%B %d, %Y" }}</p>
+    {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 280 }}</p>{% endif %}
   </article>
 </div>
